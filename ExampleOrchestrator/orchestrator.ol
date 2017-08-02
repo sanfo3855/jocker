@@ -3,7 +3,7 @@ include "string_utils.iol"
 include "json_utils.iol"
 include "file.iol"
 
-include "InterfaceAPI.iol"
+include "../InterfaceAPI.iol"
 
 outputPort DockerIn {
 	Location: "socket://localhost:8008"
