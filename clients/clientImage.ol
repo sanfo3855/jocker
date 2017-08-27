@@ -5,7 +5,7 @@ include "json_utils.iol"
 include "../InterfaceAPI.iol"
 
 outputPort DockerIn {
-	Location: "socket://localhost:8008"
+	Location: "socket://localhost:8009"
 	Protocol: sodep
 	Interfaces: InterfaceAPI
 }

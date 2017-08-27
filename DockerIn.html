@@ -1,0 +1,765 @@
+<html><head><style>body { font-size:14px; font-family:Courier; background: grey; }a { color:#000099;}table {font-size:14px; font-family:Sans-serif;border-collapse:collapse;text-align:left;}table, th, td {border:1px solid #AAAAAA;padding:7px;}li {font-family:Sans-serif;} h1 { font-size:26px; font-family:Sans-serif;} h2 { font-size:20px; font-family:Sans-serif;} h3 { font-size:16px;font-family:Sans-serif; color:#003300; } th { font-size:16px;font-family:Sans-serif; color:black; }.native { font-weight:bold; color:#990000; }.opdoc { font-family: Sans-serif; }.operation-title { background-color: #EEEEEE; width:600px; height:20px; }.code{ white-space:pre; }</style></head><body><h1>JolieDoc for Port DockerIn</h1><h2>From file <code>dockerAPI.ol</code></h2><table><tr><th>Port Name</th><th>Location</th><th>Protocol</th></tr><tr><td>DockerIn</td><td>auto:ini:/Locations/JockerLocation:file:config.ini</td><td>sodep</td></tr></table><h2>List of the available interfaces</h2><ul><li><a href="#InterfaceAPI">InterfaceAPI </a></ul><hr><h2 id=InterfaceAPI>Interface InterfaceAPI</h2><a name="InterfaceAPI"></a><table border="1"><tr><th>Heading</th><th>Input type</th><th>Output type</th><th>Faults</th></tr><tr><td><a href="#build">build</a></td><td><a href="#BuildRequest">BuildRequest</a><br /></td><td><a href="#BuildResponse">BuildResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>BadParam( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#changesOnCtn">changesOnCtn</a></td><td><a href="#ChangesRequest">ChangesRequest</a><br /></td><td><a href="#ChangesResponse">ChangesResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#containers">containers</a></td><td><a href="#ContainersRequest">ContainersRequest</a><br /></td><td><a href="#ContainersResponse">ContainersResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>BadParam( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#createContainer">createContainer</a></td><td><a href="#CreateContainerRequest">CreateContainerRequest</a><br /></td><td><a href="#CreateContainerResponse">CreateContainerResponse</a><br /></td><td>Conflict( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>NoAttachment( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>BadParam( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>NoSuchImage( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#createExec">createExec</a></td><td><a href="#CreateExecRequest">CreateExecRequest</a><br /></td><td><a href="#CreateExecResponse">CreateExecResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ContainerPaused( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#createNetwork">createNetwork</a></td><td><a href="#CreateNetworkRequest">CreateNetworkRequest</a><br /></td><td><a href="#CreateNetworkResponse">CreateNetworkResponse</a><br /></td><td>PluginNotFound( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>OperationNotSupported( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#createVolume">createVolume</a></td><td><a href="#CreateVolumeRequest">CreateVolumeRequest</a><br /></td><td><a href="#CreateVolumeResponse">CreateVolumeResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#deleteStoppedContainers">deleteStoppedContainers</a></td><td><a href="#DeleteStopContainersRequest">DeleteStopContainersRequest</a><br /></td><td><a href="#DeleteStopContainersResponse">DeleteStopContainersResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#exportContainer">exportContainer</a></td><td><a href="#ExportContainerRequest">ExportContainerRequest</a><br /></td><td>undefined<br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#exportImage">exportImage</a></td><td><a href="#ExportImageRequest">ExportImageRequest</a><br /></td><td><a href="#ExportImageResponse">ExportImageResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#imageCreate">imageCreate</a></td><td><a href="#ImageCreateRequest">ImageCreateRequest</a><br /></td><td>ImageCreateResponse<br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>NoRepository( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#imageHistory">imageHistory</a></td><td><a href="#ImageHistoryRequest">ImageHistoryRequest</a><br /></td><td><a href="#ImageHistoryResponse">ImageHistoryResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>NoImage( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#imageSearch">imageSearch</a></td><td><a href="#ImageSearchRequest">ImageSearchRequest</a><br /></td><td><a href="#ImageSearchResponse">ImageSearchResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#images">images</a></td><td><a href="#ImagesRequest">ImagesRequest</a><br /></td><td><a href="#ImagesResponse">ImagesResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>NoRepository( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#inspectContainer">inspectContainer</a></td><td><a href="#InspectContainerRequest">InspectContainerRequest</a><br /></td><td><a href="#InspectContainerResponse">InspectContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#inspectImage">inspectImage</a></td><td><a href="#InspectImageRequest">InspectImageRequest</a><br /></td><td><a href="#InspectImageResponse">InspectImageResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>NoSuchImage( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#inspectNetwork">inspectNetwork</a></td><td><a href="#InspectNetworkRequest">InspectNetworkRequest</a><br /></td><td><a href="#InspectNetworkResponse">InspectNetworkResponse</a><br /></td><td>NoSuchNetwork( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#inspectVolume">inspectVolume</a></td><td><a href="#InspectVolumeRequest">InspectVolumeRequest</a><br /></td><td><a href="#InspectVolumeResponse">InspectVolumeResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>NoSuchVolume( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#killContainer">killContainer</a></td><td><a href="#KillContainerRequest">KillContainerRequest</a><br /></td><td><a href="#KillContainerResponse">KillContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#listRunProcesses">listRunProcesses</a></td><td><a href="#ListRunProcessesRequest">ListRunProcessesRequest</a><br /></td><td><a href="#ListRunProcessesResponse">ListRunProcessesResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#logs">logs</a></td><td><a href="#LogsRequest">LogsRequest</a><br /></td><td><a href="#LogsResponse">LogsResponse</a><br /></td><td></td></tr><tr><td><a href="#networks">networks</a></td><td><a href="#NetworksRequest">NetworksRequest</a><br /></td><td><a href="#NetworksResponse">NetworksResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#pauseContainer">pauseContainer</a></td><td><a href="#PauseContainerRequest">PauseContainerRequest</a><br /></td><td><a href="#PauseContainerResponse">PauseContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#removeContainer">removeContainer</a></td><td><a href="#RemoveContainerRequest">RemoveContainerRequest</a><br /></td><td><a href="#RemoveContainerResponse">RemoveContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>BadParam( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#removeImage">removeImage</a></td><td><a href="#RemoveImageRequest">RemoveImageRequest</a><br /></td><td><a href="#RemoveImageResponse">RemoveImageResponse</a><br /></td><td>Conflict( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>NoSuchImage( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#removeNetwork">removeNetwork</a></td><td><a href="#RemoveNetworkRequest">RemoveNetworkRequest</a><br /></td><td><a href="#RemoveNetworkResponse">RemoveNetworkResponse</a><br /></td><td>Conflict( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#removeVolume">removeVolume</a></td><td><a href="#RemoveVolumeRequest">RemoveVolumeRequest</a><br /></td><td><a href="#RemoveVolumeResponse">RemoveVolumeResponse</a><br /></td><td>VolumeInUse( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>NoSuchVolume( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#renameContainer">renameContainer</a></td><td><a href="#RenameContainerRequest">RenameContainerRequest</a><br /></td><td><a href="#RenameContainerResponse">RenameContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ContainerInUse( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#restartContainer">restartContainer</a></td><td><a href="#RestartContainerRequest">RestartContainerRequest</a><br /></td><td><a href="#RestartContainerResponse">RestartContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#startContainer">startContainer</a></td><td><a href="#StartContainerRequest">StartContainerRequest</a><br /></td><td><a href="#StartContainerResponse">StartContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>AlreadyStarted( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#statsContainer">statsContainer</a></td><td><a href="#StatsContainerRequest">StatsContainerRequest</a><br /></td><td><a href="#StatsContainerResponse">StatsContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#stopContainer">stopContainer</a></td><td><a href="#StopContainerRequest">StopContainerRequest</a><br /></td><td><a href="#StopContainerResponse">StopContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>AlreadyStopped( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#unpauseContainer">unpauseContainer</a></td><td><a href="#UnpauseContainerRequest">UnpauseContainerRequest</a><br /></td><td><a href="#UnpauseContainerResponse">UnpauseContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#volumes">volumes</a></td><td><a href="#VolumesRequest">VolumesRequest</a><br /></td><td><a href="#VolumesResponse">VolumesResponse</a><br /></td><td>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr><tr><td><a href="#waitContainer">waitContainer</a></td><td><a href="#WaitContainerRequest">WaitContainerRequest</a><br /></td><td><a href="#WaitContainerResponse">WaitContainerResponse</a><br /></td><td>NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br>ServerError( <a href="#StandardFaultType">StandardFaultType</a> )&nbsp;&nbsp;<br></td></tr></table><hr><h2>Operation list</h2><div class="operation-title"><a name="removeContainer"></a><h3 id="removeContainer">removeContainer</h3></div><pre>removeContainer( <a href="#RemoveContainerRequest">RemoveContainerRequest</a> )( <a href="#RemoveContainerResponse">RemoveContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				BadParam( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Remove a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerDelete</p></span><div class="operation-title"><a name="statsContainer"></a><h3 id="statsContainer">statsContainer</h3></div><pre>statsContainer( <a href="#StatsContainerRequest">StatsContainerRequest</a> )( <a href="#StatsContainerResponse">StatsContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>container stats based on resource usage https://docs.docker.com/engine/api/v1.29/#operation/ContainerStats</p></span><div class="operation-title"><a name="deleteStoppedContainers"></a><h3 id="deleteStoppedContainers">deleteStoppedContainers</h3></div><pre>deleteStoppedContainers( <a href="#DeleteStopContainersRequest">DeleteStopContainersRequest</a> )( <a href="#DeleteStopContainersResponse">DeleteStopContainersResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>delete stopped containers https://docs.docker.com/engine/api/v1.29/#operation/ContainerPrune</p></span><div class="operation-title"><a name="stopContainer"></a><h3 id="stopContainer">stopContainer</h3></div><pre>stopContainer( <a href="#StopContainerRequest">StopContainerRequest</a> )( <a href="#StopContainerResponse">StopContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				AlreadyStopped( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>stop a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerStop</p></span><div class="operation-title"><a name="createContainer"></a><h3 id="createContainer">createContainer</h3></div><pre>createContainer( <a href="#CreateContainerRequest">CreateContainerRequest</a> )( <a href="#CreateContainerResponse">CreateContainerResponse</a> ) throws
+				Conflict( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				NoAttachment( <a href="#StandardFaultType">StandardFaultType</a> )
+				BadParam( <a href="#StandardFaultType">StandardFaultType</a> )
+				NoSuchImage( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Create a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerCreate</p></span><div class="operation-title"><a name="inspectNetwork"></a><h3 id="inspectNetwork">inspectNetwork</h3></div><pre>inspectNetwork( <a href="#InspectNetworkRequest">InspectNetworkRequest</a> )( <a href="#InspectNetworkResponse">InspectNetworkResponse</a> ) throws
+				NoSuchNetwork( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>inspect a network https://docs.docker.com/engine/api/v1.29/#operation/NetworkInspect</p></span><div class="operation-title"><a name="killContainer"></a><h3 id="killContainer">killContainer</h3></div><pre>killContainer( <a href="#KillContainerRequest">KillContainerRequest</a> )( <a href="#KillContainerResponse">KillContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Kill a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerKill</p></span><div class="operation-title"><a name="removeVolume"></a><h3 id="removeVolume">removeVolume</h3></div><pre>removeVolume( <a href="#RemoveVolumeRequest">RemoveVolumeRequest</a> )( <a href="#RemoveVolumeResponse">RemoveVolumeResponse</a> ) throws
+				VolumeInUse( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				NoSuchVolume( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Remove a volume https://docs.docker.com/engine/api/v1.29/#operation/VolumeDelete</p></span><div class="operation-title"><a name="networks"></a><h3 id="networks">networks</h3></div><pre>networks( <a href="#NetworksRequest">NetworksRequest</a> )( <a href="#NetworksResponse">NetworksResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>List netowrks https://docs.docker.com/engine/api/v1.29/#operation/NetworkList</p></span><div class="operation-title"><a name="imageCreate"></a><h3 id="imageCreate">imageCreate</h3></div><pre>imageCreate( <a href="#ImageCreateRequest">ImageCreateRequest</a> )( <a href="#ImageCreateResponse">ImageCreateResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				NoRepository( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Create an image https://docs.docker.com/engine/api/v1.29/#operation/ImageCreate</p></span><div class="operation-title"><a name="imageHistory"></a><h3 id="imageHistory">imageHistory</h3></div><pre>imageHistory( <a href="#ImageHistoryRequest">ImageHistoryRequest</a> )( <a href="#ImageHistoryResponse">ImageHistoryResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				NoImage( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>get the history of the image https://docs.docker.com/engine/api/v1.29/#operation/ImageHistory</p></span><div class="operation-title"><a name="createNetwork"></a><h3 id="createNetwork">createNetwork</h3></div><pre>createNetwork( <a href="#CreateNetworkRequest">CreateNetworkRequest</a> )( <a href="#CreateNetworkResponse">CreateNetworkResponse</a> ) throws
+				PluginNotFound( <a href="#StandardFaultType">StandardFaultType</a> )
+				OperationNotSupported( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Create a network https://docs.docker.com/engine/api/v1.29/#operation/NetworkCreate</p></span><div class="operation-title"><a name="restartContainer"></a><h3 id="restartContainer">restartContainer</h3></div><pre>restartContainer( <a href="#RestartContainerRequest">RestartContainerRequest</a> )( <a href="#RestartContainerResponse">RestartContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Restart a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerRestart</p></span><div class="operation-title"><a name="logs"></a><h3 id="logs">logs</h3></div><pre>logs( <a href="#LogsRequest">LogsRequest</a> )( <a href="#LogsResponse">LogsResponse</a> )</pre><span class="opdoc"><p>Get container logs https://docs.docker.com/engine/api/v1.29/#operation/ContainerLogs</p></span><div class="operation-title"><a name="startContainer"></a><h3 id="startContainer">startContainer</h3></div><pre>startContainer( <a href="#StartContainerRequest">StartContainerRequest</a> )( <a href="#StartContainerResponse">StartContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				AlreadyStarted( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Start a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerRestart</p></span><div class="operation-title"><a name="exportContainer"></a><h3 id="exportContainer">exportContainer</h3></div><pre>exportContainer( <a href="#ExportContainerRequest">ExportContainerRequest</a> )( <a href="#undefined">undefined</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>export a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerExport</p></span><div class="operation-title"><a name="inspectContainer"></a><h3 id="inspectContainer">inspectContainer</h3></div><pre>inspectContainer( <a href="#InspectContainerRequest">InspectContainerRequest</a> )( <a href="#InspectContainerResponse">InspectContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Inspect a container https://docs.docker.com/engine/api/v1.29/#operation/ImageInspect</p></span><div class="operation-title"><a name="images"></a><h3 id="images">images</h3></div><pre>images( <a href="#ImagesRequest">ImagesRequest</a> )( <a href="#ImagesResponse">ImagesResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				NoRepository( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>List all images https://docs.docker.com/engine/api/v1.29/#operation/ImageList</p></span><div class="operation-title"><a name="listRunProcesses"></a><h3 id="listRunProcesses">listRunProcesses</h3></div><pre>listRunProcesses( <a href="#ListRunProcessesRequest">ListRunProcessesRequest</a> )( <a href="#ListRunProcessesResponse">ListRunProcessesResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>List processes inside a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerTop</p></span><div class="operation-title"><a name="volumes"></a><h3 id="volumes">volumes</h3></div><pre>volumes( <a href="#VolumesRequest">VolumesRequest</a> )( <a href="#VolumesResponse">VolumesResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>List volumes https://docs.docker.com/engine/api/v1.29/#operation/VolumeList</p></span><div class="operation-title"><a name="createVolume"></a><h3 id="createVolume">createVolume</h3></div><pre>createVolume( <a href="#CreateVolumeRequest">CreateVolumeRequest</a> )( <a href="#CreateVolumeResponse">CreateVolumeResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Create a volume https://docs.docker.com/engine/api/v1.29/#operation/VolumeCreate</p></span><div class="operation-title"><a name="inspectVolume"></a><h3 id="inspectVolume">inspectVolume</h3></div><pre>inspectVolume( <a href="#InspectVolumeRequest">InspectVolumeRequest</a> )( <a href="#InspectVolumeResponse">InspectVolumeResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				NoSuchVolume( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>inspect a volume https://docs.docker.com/engine/api/v1.29/#operation/VolumeInspect</p></span><div class="operation-title"><a name="removeNetwork"></a><h3 id="removeNetwork">removeNetwork</h3></div><pre>removeNetwork( <a href="#RemoveNetworkRequest">RemoveNetworkRequest</a> )( <a href="#RemoveNetworkResponse">RemoveNetworkResponse</a> ) throws
+				Conflict( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Remove a network https://docs.docker.com/engine/api/v1.29/#operation/NetworkDelete</p></span><div class="operation-title"><a name="pauseContainer"></a><h3 id="pauseContainer">pauseContainer</h3></div><pre>pauseContainer( <a href="#PauseContainerRequest">PauseContainerRequest</a> )( <a href="#PauseContainerResponse">PauseContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Pause a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerPaused</p></span><div class="operation-title"><a name="exportImage"></a><h3 id="exportImage">exportImage</h3></div><pre>exportImage( <a href="#ExportImageRequest">ExportImageRequest</a> )( <a href="#ExportImageResponse">ExportImageResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>export image https://docs.docker.com/engine/api/v1.29/#operation/ContainerExport</p></span><div class="operation-title"><a name="imageSearch"></a><h3 id="imageSearch">imageSearch</h3></div><pre>imageSearch( <a href="#ImageSearchRequest">ImageSearchRequest</a> )( <a href="#ImageSearchResponse">ImageSearchResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Search images https://docs.docker.com/engine/api/v1.29/#operation/ImageSearch</p></span><div class="operation-title"><a name="removeImage"></a><h3 id="removeImage">removeImage</h3></div><pre>removeImage( <a href="#RemoveImageRequest">RemoveImageRequest</a> )( <a href="#RemoveImageResponse">RemoveImageResponse</a> ) throws
+				Conflict( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				NoSuchImage( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Remove an image https://docs.docker.com/engine/api/v1.29/#operation/ImageDelete</p></span><div class="operation-title"><a name="waitContainer"></a><h3 id="waitContainer">waitContainer</h3></div><pre>waitContainer( <a href="#WaitContainerRequest">WaitContainerRequest</a> )( <a href="#WaitContainerResponse">WaitContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Wait for a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerWait</p></span><div class="operation-title"><a name="changesOnCtn"></a><h3 id="changesOnCtn">changesOnCtn</h3></div><pre>changesOnCtn( <a href="#ChangesRequest">ChangesRequest</a> )( <a href="#ChangesResponse">ChangesResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>get changes on a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerChanges</p></span><div class="operation-title"><a name="build"></a><h3 id="build">build</h3></div><pre>build( <a href="#BuildRequest">BuildRequest</a> )( <a href="#BuildResponse">BuildResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				BadParam( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>build an image starting from a file https://docs.docker.com/engine/api/v1.29/#operation/ImageBuild</p></span><div class="operation-title"><a name="createExec"></a><h3 id="createExec">createExec</h3></div><pre>createExec( <a href="#CreateExecRequest">CreateExecRequest</a> )( <a href="#CreateExecResponse">CreateExecResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				ContainerPaused( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Create an exec instance https://docs.docker.com/engine/api/v1.29/#operation/ContainerExec</p></span><div class="operation-title"><a name="containers"></a><h3 id="containers">containers</h3></div><pre>containers( <a href="#ContainersRequest">ContainersRequest</a> )( <a href="#ContainersResponse">ContainersResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				BadParam( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>List containers https://docs.docker.com/engine/api/v1.29/#operation/ContainerList</p></span><div class="operation-title"><a name="renameContainer"></a><h3 id="renameContainer">renameContainer</h3></div><pre>renameContainer( <a href="#RenameContainerRequest">RenameContainerRequest</a> )( <a href="#RenameContainerResponse">RenameContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				ContainerInUse( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Rename a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerRename</p></span><div class="operation-title"><a name="unpauseContainer"></a><h3 id="unpauseContainer">unpauseContainer</h3></div><pre>unpauseContainer( <a href="#UnpauseContainerRequest">UnpauseContainerRequest</a> )( <a href="#UnpauseContainerResponse">UnpauseContainerResponse</a> ) throws
+				NoSuchContainer( <a href="#StandardFaultType">StandardFaultType</a> )
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Unpause a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerUnpause</p></span><div class="operation-title"><a name="inspectImage"></a><h3 id="inspectImage">inspectImage</h3></div><pre>inspectImage( <a href="#InspectImageRequest">InspectImageRequest</a> )( <a href="#InspectImageResponse">InspectImageResponse</a> ) throws
+				ServerError( <a href="#StandardFaultType">StandardFaultType</a> )
+				NoSuchImage( <a href="#StandardFaultType">StandardFaultType</a> )</pre><span class="opdoc"><p>Inspect an image https://docs.docker.com/engine/api/v1.29/#operation/ImageInspect</p></span><hr><h2>Message type list</h2><a name="RemoveContainerRequest"></a><h3 id="RemoveContainerRequest">RemoveContainerRequest</h3><div class="code" lang="jolie">type RemoveContainerRequest: void {
+    .v?: bool
+    .force?: bool
+    .id: string
+}</div><a name="RemoveContainerResponse"></a><h3 id="RemoveContainerResponse">RemoveContainerResponse</h3><div class="code" lang="jolie">type RemoveContainerResponse: void {
+    .message?: string
+}</div><a name="StandardFaultType"></a><h3 id="StandardFaultType">StandardFaultType</h3><div class="code" lang="jolie">type StandardFaultType: void {
+    .message: string
+    .status: int
+}</div><a name="StatsContainerRequest"></a><h3 id="StatsContainerRequest">StatsContainerRequest</h3><div class="code" lang="jolie">type StatsContainerRequest: void {
+    .stream?: bool
+    .id: string
+}</div><a name="StatsContainerResponse"></a><h3 id="StatsContainerResponse">StatsContainerResponse</h3><div class="code" lang="jolie">type StatsContainerResponse: void {
+    .precpu_stats?: void {
+        .system_cpu_usage?: int
+        .throttling_data?: void {
+            .throttled_time?: int
+            .periods?: int
+            .throttled_periods?: int
+        }
+        .cpu_usage: void {
+            .percpu_usage*: string
+            .usage_in_kernelmode?: int
+            .total_usage?: int
+            .usage_in_usermode?: int
+        }
+    }
+    .cpu_stats?: void {
+        .system_cpu_usage?: int
+        .throttling_data?: void {
+            .throttled_time?: int
+            .periods?: int
+            .throttled_periods?: int
+        }
+        .cpu_usage: void {
+            .percpu_usage*: string
+            .usage_in_kernelmode?: int
+            .total_usage?: int
+            .usage_in_usermode?: int
+        }
+    }
+    .read?: string
+    .pids_stats?: void {
+        .current?: int
+    }
+    .networks?: void {
+        .eth5?: void {
+            .tx_packets?: int
+            .tx_errors?: int
+            .tx_dropped?: int
+            .rx_dropped?: int
+            .rx_bytes?: int
+            .tx_bytes?: int
+            .rx_errors?: int
+            .rx_packets?: int
+        }
+        .eth0?: void {
+            .tx_packets?: int
+            .tx_errors?: int
+            .tx_dropped?: int
+            .rx_dropped?: int
+            .rx_bytes?: int
+            .tx_bytes?: int
+            .rx_errors?: int
+            .rx_packets?: int
+        }
+    }
+    .memory_stats?: void {
+        .failcnt?: int
+        .stats?: void {
+            .inactive_anon?: int
+            .total_pgfault?: int
+            .total_unevictable?: int
+            .pgfault?: int
+            .mapped_file?: int
+            .total_pgpgout?: int
+            .total_active_anon?: int
+            .hierarchial_memory_limit?: int
+            .total_rss?: int
+            .rss?: int
+            .total_inactive_anon?: int
+            .active_file?: int
+            .total_mapped_file?: int
+            .total_inactive_file?: int
+            .total_rss_huge?: int
+            .cache?: int
+            .rss_huge?: int
+            .total_pgpgin?: int
+            .unevictable?: int
+            .active_anon?: int
+            .total_active_file?: int
+            .total_cache?: int
+            .pgpgin?: int
+            .pgmajfault?: int
+            .inactive_file?: int
+            .writeback?: int
+            .pgpgout?: int
+            .total_pgmajfault?: int
+            .total_writeback?: int
+        }
+        .max_usage?: int
+        .usage?: int
+        .limit?: int
+    }
+    .blkio_stats?: undefined
+}</div><a name="DeleteStopContainersRequest"></a><h3 id="DeleteStopContainersRequest">DeleteStopContainersRequest</h3><div class="code" lang="jolie">type DeleteStopContainersRequest: void {
+    .filters?: string
+}</div><a name="DeleteStopContainersResponse"></a><h3 id="DeleteStopContainersResponse">DeleteStopContainersResponse</h3><div class="code" lang="jolie">type DeleteStopContainersResponse: void {
+    .SpaceReclaimed?: int
+    .ContainersDeleted*: string
+}</div><a name="StopContainerRequest"></a><h3 id="StopContainerRequest">StopContainerRequest</h3><div class="code" lang="jolie">type StopContainerRequest: void {
+    .t?: int
+    .id: string
+}</div><a name="StopContainerResponse"></a><h3 id="StopContainerResponse">StopContainerResponse</h3><div class="code" lang="jolie">type StopContainerResponse: void {
+    .message?: string
+}</div><a name="CreateContainerRequest"></a><h3 id="CreateContainerRequest">CreateContainerRequest</h3><div class="code" lang="jolie">type CreateContainerRequest: void {
+    .StopSignal?: string
+    .User?: string
+    .Entrypoint*: string
+    .NetworkingConfig?: void {
+        .EndpointsConfig?: void {
+            .isolated_nw?: void {
+                .IPAMConfig?: void {
+                    .LinkLocalIPs*: string
+                    .IPv6Address?: string
+                    .IPv4Address?: string
+                }
+                .Links*: string
+                .Aliases*: string
+            }
+        }
+    }
+    .AttachStderr?: bool
+    .Hostname?: string
+    .OpenStdin?: bool
+    .Labels?: undefined
+    .Env*: string
+    .Image?: string
+    .NetworkDisabled?: bool
+    .MacAddress?: string
+    .ExposedPorts?: undefined
+    .StdinOnce?: bool
+    .AttachStdout?: bool
+    .WorkingDir?: string
+    .Volumes?: undefined
+    .Domainname?: string
+    .AttachStdin?: bool
+    .name?: string
+    .Tty?: bool
+    .HostConfig?: HostConfig
+    .Cmd*: string
+    .StopTimeout?: int
+}</div><a name="CreateContainerResponse"></a><h3 id="CreateContainerResponse">CreateContainerResponse</h3><div class="code" lang="jolie">type CreateContainerResponse: void {
+    .Id: string
+    .Warnings*: undefined
+}</div><a name="InspectNetworkRequest"></a><h3 id="InspectNetworkRequest">InspectNetworkRequest</h3><div class="code" lang="jolie">type InspectNetworkRequest: void {
+    .id: string
+}</div><a name="InspectNetworkResponse"></a><h3 id="InspectNetworkResponse">InspectNetworkResponse</h3><div class="code" lang="jolie">type InspectNetworkResponse: void {
+    .result: NetworkType
+}</div><a name="KillContainerRequest"></a><h3 id="KillContainerRequest">KillContainerRequest</h3><div class="code" lang="jolie">type KillContainerRequest: void {
+    .id: string
+    .signal?: string
+}</div><a name="KillContainerResponse"></a><h3 id="KillContainerResponse">KillContainerResponse</h3><div class="code" lang="jolie">type KillContainerResponse: void {
+    .message?: string
+}</div><a name="RemoveVolumeRequest"></a><h3 id="RemoveVolumeRequest">RemoveVolumeRequest</h3><div class="code" lang="jolie">type RemoveVolumeRequest: void {
+    .name: string
+    .force?: bool
+}</div><a name="RemoveVolumeResponse"></a><h3 id="RemoveVolumeResponse">RemoveVolumeResponse</h3><div class="code" lang="jolie">type RemoveVolumeResponse: void {
+    .message?: string
+}</div><a name="NetworksRequest"></a><h3 id="NetworksRequest">NetworksRequest</h3><div class="code" lang="jolie">type NetworksRequest: void {
+    .filters?: string {
+        .driver?: string
+        .name?: string
+        .id?: string
+        .label?: undefined
+        .type?: string
+    }
+}</div><a name="NetworksResponse"></a><h3 id="NetworksResponse">NetworksResponse</h3><div class="code" lang="jolie">type NetworksResponse: void {
+    .network*: NetworkType
+}</div><a name="ImageCreateRequest"></a><h3 id="ImageCreateRequest">ImageCreateRequest</h3><div class="code" lang="jolie">type ImageCreateRequest: void {
+    .fromImage: string
+    .repo?: string
+    .fromSrc?: string
+    .tag?: string
+}</div><a name="ImageCreateResponse"></a><h3 id="ImageCreateResponse">ImageCreateResponse</h3><div class="code" lang="jolie">type ImageCreateResponse: void</div><a name="ImageHistoryRequest"></a><h3 id="ImageHistoryRequest">ImageHistoryRequest</h3><div class="code" lang="jolie">type ImageHistoryRequest: void {
+    .name: string
+}</div><a name="ImageHistoryResponse"></a><h3 id="ImageHistoryResponse">ImageHistoryResponse</h3><div class="code" lang="jolie">type ImageHistoryResponse: void {
+    .histories*: void {
+        .Comment: string
+        .CreatedBy: string
+        .Size: int
+        .Id: string
+        .Tags*: undefined
+        .Created: int
+    }
+}</div><a name="CreateNetworkRequest"></a><h3 id="CreateNetworkRequest">CreateNetworkRequest</h3><div class="code" lang="jolie">type CreateNetworkRequest: void {
+    .CheckDuplicate?: bool
+    .IPAM?: void {
+        .Options?: undefined
+        .Config*: void {
+            .Gateway?: string
+            .Subnet?: string
+        }
+        .Driver?: string
+    }
+    .Options?: undefined
+    .Internal?: bool
+    .Driver?: string
+    .Labels?: undefined
+    .EnableIPv6?: bool
+    .Name: string
+}</div><a name="CreateNetworkResponse"></a><h3 id="CreateNetworkResponse">CreateNetworkResponse</h3><div class="code" lang="jolie">type CreateNetworkResponse: void {
+    .Warning?: string
+    .Id?: string
+}</div><a name="RestartContainerRequest"></a><h3 id="RestartContainerRequest">RestartContainerRequest</h3><div class="code" lang="jolie">type RestartContainerRequest: void {
+    .t?: int
+    .id: string
+}</div><a name="RestartContainerResponse"></a><h3 id="RestartContainerResponse">RestartContainerResponse</h3><div class="code" lang="jolie">type RestartContainerResponse: void {
+    .message?: string
+}</div><a name="LogsRequest"></a><h3 id="LogsRequest">LogsRequest</h3><div class="code" lang="jolie">type LogsRequest: void {
+    .stdout?: bool
+    .timestamps?: bool
+    .tail?: string
+    .id: string
+    .follow?: bool
+    .stderr?: bool
+    .since?: int
+}</div><a name="LogsResponse"></a><h3 id="LogsResponse">LogsResponse</h3><div class="code" lang="jolie">type LogsResponse: void {
+    .log: undefined
+}</div><a name="StartContainerRequest"></a><h3 id="StartContainerRequest">StartContainerRequest</h3><div class="code" lang="jolie">type StartContainerRequest: void {
+    .detachKeys?: string
+    .id: string
+}</div><a name="StartContainerResponse"></a><h3 id="StartContainerResponse">StartContainerResponse</h3><div class="code" lang="jolie">type StartContainerResponse: void {
+    .message?: string
+}</div><a name="ExportContainerRequest"></a><h3 id="ExportContainerRequest">ExportContainerRequest</h3><div class="code" lang="jolie">type ExportContainerRequest: void {
+    .id: string
+}</div><a name="InspectContainerRequest"></a><h3 id="InspectContainerRequest">InspectContainerRequest</h3><div class="code" lang="jolie">type InspectContainerRequest: void {
+    .size?: bool
+    .id: string
+}</div><a name="InspectContainerResponse"></a><h3 id="InspectContainerResponse">InspectContainerResponse</h3><div class="code" lang="jolie">type InspectContainerResponse: void {
+    .Path?: string
+    .Args*: string
+    .ProcessLabel?: string
+    .Mounts*: Mount
+    .SizeRw?: int
+    .Config?: Config
+    .AppArmorProfile?: string
+    .Driver?: string
+    .HostsPath?: string
+    .HostnamePath?: string
+    .GraphDriver?: undefined
+    .Image?: string
+    .Created?: string
+    .Name?: string
+    .RestartCount?: int
+    .NetworkSettings?: NetworkSettings
+    .MountLabel?: string
+    .SizeRootFs?: int
+    .ResolvConfPath?: string
+    .State?: State
+    .ExecIDs?: undefined
+    .HostConfig?: HostConfig
+    .Id?: string
+    .LogPath?: string
+}</div><a name="ImagesRequest"></a><h3 id="ImagesRequest">ImagesRequest</h3><div class="code" lang="jolie">type ImagesRequest: void {
+    .all?: bool
+    .digest?: bool
+    .filters?: string {
+        .reference?: string
+        .before?: string
+        .dangling?: bool
+        .label?: undefined
+        .since?: string
+    }
+}</div><a name="ImagesResponse"></a><h3 id="ImagesResponse">ImagesResponse</h3><div class="code" lang="jolie">type ImagesResponse: void {
+    .images*: void {
+        .ParentId?: string
+        .RepoDigests*: undefined
+        .VirtualSize?: int
+        .SharedSize?: int
+        .RepoTags*: string
+        .Size?: int
+        .Containers?: int
+        .Labels?: undefined
+        .Id?: string
+        .Created?: int
+    }
+}</div><a name="ListRunProcessesRequest"></a><h3 id="ListRunProcessesRequest">ListRunProcessesRequest</h3><div class="code" lang="jolie">type ListRunProcessesRequest: void {
+    .ps_args?: string
+    .id: string
+}</div><a name="ListRunProcessesResponse"></a><h3 id="ListRunProcessesResponse">ListRunProcessesResponse</h3><div class="code" lang="jolie">type ListRunProcessesResponse: void {
+    .Processes*: void {
+        .row*: string
+    }
+    .Titles*: string
+}</div><a name="VolumesRequest"></a><h3 id="VolumesRequest">VolumesRequest</h3><div class="code" lang="jolie">type VolumesRequest: void {
+    .filters?: string {
+        .driver?: string
+        .name?: string
+        .dangling?: bool
+    }
+}</div><a name="VolumesResponse"></a><h3 id="VolumesResponse">VolumesResponse</h3><div class="code" lang="jolie">type VolumesResponse: void {
+    .Volumes*: void {
+        .Options?: void {
+            .type?: string
+            .device?: string
+            .o?: string
+        }
+        .Scope: undefined
+        .Driver: string
+        .Labels: undefined
+        .Mountpoint: string
+        .Name: string
+    }
+    .Warnings*: void
+}</div><a name="CreateVolumeRequest"></a><h3 id="CreateVolumeRequest">CreateVolumeRequest</h3><div class="code" lang="jolie">type CreateVolumeRequest: void {
+    .DriverOpts*: string
+    .Driver?: string
+    .Labels?: undefined
+    .Name?: string
+}</div><a name="CreateVolumeResponse"></a><h3 id="CreateVolumeResponse">CreateVolumeResponse</h3><div class="code" lang="jolie">type CreateVolumeResponse: void {
+    .Status?: undefined
+    .Options: undefined
+    .Scope: string
+    .UsageData?: void {
+        .RefCount: int
+        .Size: int
+    }
+    .Driver: string
+    .Labels: undefined
+    .Mountpoint: string
+    .Name: string
+}</div><a name="InspectVolumeRequest"></a><h3 id="InspectVolumeRequest">InspectVolumeRequest</h3><div class="code" lang="jolie">type InspectVolumeRequest: void {
+    .name: string
+}</div><a name="InspectVolumeResponse"></a><h3 id="InspectVolumeResponse">InspectVolumeResponse</h3><div class="code" lang="jolie">type InspectVolumeResponse: void {
+    .Status?: undefined
+    .Options?: void {
+        .type?: string
+        .device?: string
+        .o?: string
+    }
+    .Scope: string
+    .Driver: string
+    .Labels: undefined
+    .Mountpoint: string
+    .Name: string
+}</div><a name="RemoveNetworkRequest"></a><h3 id="RemoveNetworkRequest">RemoveNetworkRequest</h3><div class="code" lang="jolie">type RemoveNetworkRequest: void {
+    .id: string
+}</div><a name="RemoveNetworkResponse"></a><h3 id="RemoveNetworkResponse">RemoveNetworkResponse</h3><div class="code" lang="jolie">type RemoveNetworkResponse: void {
+    .message?: string
+}</div><a name="PauseContainerRequest"></a><h3 id="PauseContainerRequest">PauseContainerRequest</h3><div class="code" lang="jolie">type PauseContainerRequest: void {
+    .id: string
+}</div><a name="PauseContainerResponse"></a><h3 id="PauseContainerResponse">PauseContainerResponse</h3><div class="code" lang="jolie">type PauseContainerResponse: void {
+    .message?: string
+}</div><a name="ExportImageRequest"></a><h3 id="ExportImageRequest">ExportImageRequest</h3><div class="code" lang="jolie">type ExportImageRequest: void {
+    .name: string
+}</div><a name="ExportImageResponse"></a><h3 id="ExportImageResponse">ExportImageResponse</h3><div class="code" lang="jolie">type ExportImageResponse: void {
+    .exporting: undefined
+}</div><a name="ImageSearchRequest"></a><h3 id="ImageSearchRequest">ImageSearchRequest</h3><div class="code" lang="jolie">type ImageSearchRequest: void {
+    .limit?: int
+    .term: string
+    .filters?: string {
+        .is_official: bool
+        .is_automated: bool
+        .stars?: int
+    }
+}</div><a name="ImageSearchResponse"></a><h3 id="ImageSearchResponse">ImageSearchResponse</h3><div class="code" lang="jolie">type ImageSearchResponse: void {
+    .results*: void {
+        .is_official?: bool
+        .is_automated?: bool
+        .name?: string
+        .description?: string
+        .star_count?: int
+    }
+}</div><a name="RemoveImageRequest"></a><h3 id="RemoveImageRequest">RemoveImageRequest</h3><div class="code" lang="jolie">type RemoveImageRequest: void {
+    .name: string
+    .force?: bool
+    .noprune?: bool
+}</div><a name="RemoveImageResponse"></a><h3 id="RemoveImageResponse">RemoveImageResponse</h3><div class="code" lang="jolie">type RemoveImageResponse: void {
+    .info*: void {
+        .Deleted?: string
+        .Untagged?: string
+    }
+}</div><a name="WaitContainerRequest"></a><h3 id="WaitContainerRequest">WaitContainerRequest</h3><div class="code" lang="jolie">type WaitContainerRequest: void {
+    .id: string
+}</div><a name="WaitContainerResponse"></a><h3 id="WaitContainerResponse">WaitContainerResponse</h3><div class="code" lang="jolie">type WaitContainerResponse: void {
+    .StatusCode: int
+}</div><a name="ChangesRequest"></a><h3 id="ChangesRequest">ChangesRequest</h3><div class="code" lang="jolie">type ChangesRequest: void {
+    .id: string
+}</div><a name="ChangesResponse"></a><h3 id="ChangesResponse">ChangesResponse</h3><div class="code" lang="jolie">type ChangesResponse: void {
+    .changes*: void {
+        .Path?: string
+        .Kind?: int
+    }
+}</div><a name="BuildRequest"></a><h3 id="BuildRequest">BuildRequest</h3><div class="code" lang="jolie">type BuildRequest: void {
+    .Content_type?: string
+    .memory?: int
+    .shmsize?: int
+    .cpushares?: int
+    .cachefrom?: string
+    .dockerfile?: string
+    .remote?: string
+    .networkmode?: string
+    .buildargs?: int
+    .labels?: string
+    .q?: bool
+    .pull?: string
+    .file: raw
+    .squash?: bool
+    .t?: string
+    .cpuquota?: int
+    .nocache?: bool
+    .rm?: bool
+    .forcerm?: bool
+    .cpusetcpus?: string
+    .memswap?: int
+    .cpuperiod?: int
+    .X_Registry_Config?: string
+}</div><a name="BuildResponse"></a><h3 id="BuildResponse">BuildResponse</h3><div class="code" lang="jolie">type BuildResponse: void {
+    .message?: string
+}</div><a name="CreateExecRequest"></a><h3 id="CreateExecRequest">CreateExecRequest</h3><div class="code" lang="jolie">type CreateExecRequest: void {
+    .AttachStdout?: bool
+    .User?: string
+    .DetachKeys?: string
+    .AttachStdin?: bool
+    .AttachStderr?: bool
+    .Privileged?: bool
+    .Tty?: bool
+    .id: string
+    .Cmd*: string
+    .Env*: string
+}</div><a name="CreateExecResponse"></a><h3 id="CreateExecResponse">CreateExecResponse</h3><div class="code" lang="jolie">type CreateExecResponse: void {
+    .Id: string
+    .message?: string
+}</div><a name="ContainersRequest"></a><h3 id="ContainersRequest">ContainersRequest</h3><div class="code" lang="jolie">type ContainersRequest: void {
+    .all?: bool
+    .size?: bool
+    .limit?: int
+    .filters?: void {
+        .before?: string
+        .is_task?: bool
+        .ancestor?: string
+        .health?: string
+        .isolation?: string
+        .label?: undefined
+        .network?: string
+        .volume?: string
+        .exited?: int
+        .name?: string
+        .id?: string
+        .status?: string
+        .since?: string
+    }
+}</div><a name="ContainersResponse"></a><h3 id="ContainersResponse">ContainersResponse</h3><div class="code" lang="jolie">type ContainersResponse: void {
+    .container*: void {
+        .Status?: string
+        .Mounts*: Mount
+        .SizeRw?: int
+        .Ports*: Port
+        .Labels?: undefined
+        .Image?: string
+        .Created?: int
+        .Names*: string
+        .NetworkSettings?: Networks
+        .Command?: string
+        .State?: string
+        .ImageID?: string
+        .HostConfig?: void {
+            .NetworkMode: string
+        }
+        .Id?: string
+    }
+}</div><a name="RenameContainerRequest"></a><h3 id="RenameContainerRequest">RenameContainerRequest</h3><div class="code" lang="jolie">type RenameContainerRequest: void {
+    .name: string
+    .id: string
+}</div><a name="RenameContainerResponse"></a><h3 id="RenameContainerResponse">RenameContainerResponse</h3><div class="code" lang="jolie">type RenameContainerResponse: void {
+    .message?: string
+}</div><a name="UnpauseContainerRequest"></a><h3 id="UnpauseContainerRequest">UnpauseContainerRequest</h3><div class="code" lang="jolie">type UnpauseContainerRequest: void {
+    .id: string
+}</div><a name="UnpauseContainerResponse"></a><h3 id="UnpauseContainerResponse">UnpauseContainerResponse</h3><div class="code" lang="jolie">type UnpauseContainerResponse: void {
+    .message?: string
+}</div><a name="InspectImageRequest"></a><h3 id="InspectImageRequest">InspectImageRequest</h3><div class="code" lang="jolie">type InspectImageRequest: void {
+    .name: string
+}</div><a name="InspectImageResponse"></a><h3 id="InspectImageResponse">InspectImageResponse</h3><div class="code" lang="jolie">type InspectImageResponse: void {
+    .RepoDigests*: undefined
+    .Comment?: string
+    .VirtualSize?: int
+    .Os?: string
+    .Architecture?: string
+    .Parent?: string
+    .Size?: int
+    .Config?: Config
+    .GraphDriver?: undefined
+    .Created?: string
+    .ContainerConfig?: Config
+    .Container?: string
+    .RootFS?: void {
+        .Type?: string
+        .Layers*: string
+    }
+    .DockerVersion?: string
+    .RepoTags*: string
+    .Author?: string
+    .Id?: string
+}</div><hr><h2>Type list</h2><h3 id="undefined">undefined</h3><a name="undefined"></a><div class="code" lang="jolie">type undefined: undefined</div><h3 id="HostConfig">HostConfig</h3><a name="HostConfig"></a><div class="code" lang="jolie">type HostConfig: void {
+    .ReadonlyRootfs?: bool
+    .DiskQuota?: int
+    .BlkioWeightDevice*: undefined
+    .DnsOptions*: undefined
+    .Memory?: int
+    .MaximumIOBps?: int
+    .CpuPeriod?: int
+    .Dns*: undefined
+    .VolumesFrom?: undefined
+    .PortBindings?: undefined
+    .Devices*: undefined
+    .MemorySwappiness?: int
+    .BlkioWeight?: int
+    .Runtime?: string
+    .UsernsMode?: string
+    .Ulimits*: undefined
+    .CpusetCpus?: string
+    .MemoryReservation?: int
+    .ExtraHosts?: undefined
+    .BlkioDeviceWriteIOps*: undefined
+    .UTSMode?: string
+    .Cgroup?: string
+    .CpuQuota?: int
+    .CpuRealtimeRuntime?: int
+    .DnsSearch?: undefined
+    .CpuShares?: int
+    .ContainerIDFile?: string
+    .OomScoreAdj?: int
+    .KernelMemory?: int
+    .LogConfig*: undefined
+    .OomKillDisable?: bool
+    .Privileged?: bool
+    .IOMaximumBandwidth?: int
+    .Sysctls?: undefined
+    .LxcConf*: undefined
+    .GroupAdd?: undefined
+    .AutoRemove?: bool
+    .CpuPercent?: int
+    .IOMaximumIOps?: int
+    .ConsoleSize*: int
+    .CapAdd?: undefined
+    .VolumeDriver?: string
+    .CpuCount?: int
+    .CapDrop?: undefined
+    .PublishAllPorts?: bool
+    .CpuRealtimePeriod?: int
+    .IpcMode?: string
+    .Binds?: undefined
+    .CpusetMems?: string
+    .BlkioDeviceWriteBps*: undefined
+    .RestartPolicy?: undefined
+    .NetworkMode?: string
+    .PidMode?: string
+    .BlkioDeviceReadBps*: undefined
+    .CgroupParent?: string
+    .MaximumIOps?: int
+    .NanoCpus?: int
+    .MemorySwap?: int
+    .Isolation?: string
+    .PidsLimit?: int
+    .Links?: undefined
+    .BlkioDeviceReadIOps*: undefined
+    .ShmSize?: int
+    .SecurityOpt?: undefined
+}</div><h3 id="NetworkType">NetworkType</h3><a name="NetworkType"></a><div class="code" lang="jolie">type NetworkType: void {
+    .IPAM?: void {
+        .Options?: undefined
+        .Config*: void {
+            .Gateway?: string
+            .Subnet?: string
+        }
+        .Driver?: string
+    }
+    .Options?: undefined
+    .Scope?: string
+    .Internal?: bool
+    .Containers?: undefined
+    .Driver?: string
+    .Labels?: undefined
+    .Id?: string
+    .Attachable?: bool
+    .EnableIPv6?: bool
+    .Name?: string
+    .Created?: string
+}</div><h3 id="Mount">Mount</h3><a name="Mount"></a><div class="code" lang="jolie">type Mount: void {
+    .Destination?: string
+    .Type?: string
+    .Propagation?: string
+    .RW?: bool
+    .Mode?: string
+    .Driver?: string
+    .Source?: string
+    .Name?: string
+}</div><h3 id="Config">Config</h3><a name="Config"></a><div class="code" lang="jolie">type Config: void {
+    .StopSignal?: string
+    .User?: string
+    .Entrypoint?: undefined
+    .AttachStderr?: bool
+    .ArgsEscaped?: bool
+    .PublishService?: string
+    .Hostname?: string
+    .Labels?: undefined
+    .OpenStdin?: bool
+    .Env*: string
+    .Image?: string
+    .MacAddress?: string
+    .NetworkDisabled?: bool
+    .ExposedPorts?: undefined
+    .StdinOnce?: bool
+    .AttachStdout?: bool
+    .WorkingDir: string
+    .Volumes?: undefined
+    .OnBuild*: undefined
+    .AttachStdin?: bool
+    .Domainname?: string
+    .Tty?: bool
+    .Cmd*: string
+    .StopTimeout?: int
+}</div><h3 id="NetworkSettings">NetworkSettings</h3><a name="NetworkSettings"></a><div class="code" lang="jolie">type NetworkSettings: void {
+    .HairpinMode?: bool
+    .Networks?: void {
+        .bridge?: Bridge
+    }
+    .SandboxKey?: string
+    .GlobalIPv6Address?: string
+    .Ports?: undefined
+    .GlobalIPv6PrefixLen?: int
+    .IPPrefixLen?: int
+    .MacAddress?: string
+    .SandboxID?: string
+    .LinkLocalIPv6Address?: string
+    .LinkLocalIPv6PrefixLen?: int
+    .Gateway?: string
+    .EndpointID?: string
+    .SecondaryIPv6Addresses?: undefined
+    .IPv6Gateway?: string
+    .SecondaryIPAddresses?: undefined
+    .IPAddress?: string
+    .Bridge?: string
+}</div><h3 id="Bridge">Bridge</h3><a name="Bridge"></a><div class="code" lang="jolie">type Bridge: void {
+    .IPAMConfig?: undefined
+    .Gateway?: string
+    .GlobalIPv6Address?: string
+    .EndpointID?: string
+    .Links?: undefined
+    .GlobalIPv6PrefixLen?: int
+    .IPPrefixLen?: int
+    .IPv6Gateway?: string
+    .Aliases?: undefined
+    .IPAddress?: string
+    .MacAddress?: string
+    .NetworkID?: string
+}</div><h3 id="State">State</h3><a name="State"></a><div class="code" lang="jolie">type State: void {
+    .Status?: string
+    .Restarting?: bool
+    .Dead?: bool
+    .ExitCode?: int
+    .Running?: bool
+    .Error?: string
+    .FinishedAt?: string
+    .OOMKilled?: bool
+    .Pid?: int
+    .StartedAt?: string
+    .Paused?: bool
+}</div><h3 id="Port">Port</h3><a name="Port"></a><div class="code" lang="jolie">type Port: void {
+    .Type?: string
+    .IP?: string
+    .PrivatePort?: int
+    .PublicPort?: int
+}</div><h3 id="Networks">Networks</h3><a name="Networks"></a><div class="code" lang="jolie">type Networks: void {
+    .Networks?: void {
+        .host?: Host
+        .bridge?: Bridge
+    }
+}</div><h3 id="Host">Host</h3><a name="Host"></a><div class="code" lang="jolie">type Host: void {
+    .IPAMConfig: void | string
+    .GlobalIPv6Address: string
+    .Gateway: string
+    .EndpointID: string
+    .Links*: void | string
+    .IPPrefixLen: int
+    .GlobalIPv6PrefixLen: int
+    .IPv6Gateway: string
+    .Aliases: void | string
+    .NetworkID: string
+    .MacAddress: string
+    .IPAddress: string
+}</div></body></html>

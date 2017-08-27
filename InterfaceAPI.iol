@@ -877,142 +877,142 @@ type WaitContainerResponse: void {
 
 interface InterfaceAPI {
   RequestResponse:
-	/* build an image starting from a file https://docs.docker.com/engine/api/v1.29/#operation/ImageBuild */
+	/**! build an image starting from a file https://docs.docker.com/engine/api/v1.29/#operation/ImageBuild */
 	build( BuildRequest )( BuildResponse )
 		throws BadParam( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* get changes on a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerChanges */
+	/**! get changes on a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerChanges */
 	changesOnCtn( ChangesRequest )( ChangesResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* List containers https://docs.docker.com/engine/api/v1.29/#operation/ContainerList */
+	/**! List containers https://docs.docker.com/engine/api/v1.29/#operation/ContainerList */
 	containers( ContainersRequest )( ContainersResponse )
 		throws BadParam( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* Create a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerCreate */
+	/**! Create a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerCreate */
 	createContainer( CreateContainerRequest )( CreateContainerResponse )
 		throws BadParam( StandardFaultType ) ServerError( StandardFaultType ) NoSuchImage( StandardFaultType ) NoAttachment( StandardFaultType ) Conflict( StandardFaultType ),
 
-	/* Create an exec instance https://docs.docker.com/engine/api/v1.29/#operation/ContainerExec */
+	/**! Create an exec instance https://docs.docker.com/engine/api/v1.29/#operation/ContainerExec */
 	createExec( CreateExecRequest )( CreateExecResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ) ContainerPaused( StandardFaultType ),
 
-	/* Create a network https://docs.docker.com/engine/api/v1.29/#operation/NetworkCreate */
+	/**! Create a network https://docs.docker.com/engine/api/v1.29/#operation/NetworkCreate */
 	createNetwork( CreateNetworkRequest )( CreateNetworkResponse )
 		throws PluginNotFound( StandardFaultType ) ServerError( StandardFaultType ) OperationNotSupported( StandardFaultType ),
 
-	/* Create a volume https://docs.docker.com/engine/api/v1.29/#operation/VolumeCreate */
+	/**! Create a volume https://docs.docker.com/engine/api/v1.29/#operation/VolumeCreate */
 	createVolume( CreateVolumeRequest )( CreateVolumeResponse )
 		throws ServerError( StandardFaultType ),
 
-	/* delete stopped containers https://docs.docker.com/engine/api/v1.29/#operation/ContainerPrune */
+	/**! delete stopped containers https://docs.docker.com/engine/api/v1.29/#operation/ContainerPrune */
 	deleteStoppedContainers( DeleteStopContainersRequest )( DeleteStopContainersResponse )
 		throws ServerError( StandardFaultType ),
 
-	/* export a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerExport */
+	/**! export a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerExport */
 	exportContainer( ExportContainerRequest )( undefined )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* export image https://docs.docker.com/engine/api/v1.29/#operation/ContainerExport */
+	/**! export image https://docs.docker.com/engine/api/v1.29/#operation/ContainerExport */
 	exportImage( ExportImageRequest )( ExportImageResponse )
 		throws ServerError( StandardFaultType ),
 
-	/* List all images https://docs.docker.com/engine/api/v1.29/#operation/ImageList */
+	/**! List all images https://docs.docker.com/engine/api/v1.29/#operation/ImageList */
 	images( ImagesRequest )( ImagesResponse )
 		throws ServerError( StandardFaultType ) NoRepository( StandardFaultType ),
 
-	/* Create an image https://docs.docker.com/engine/api/v1.29/#operation/ImageCreate */
+	/**! Create an image https://docs.docker.com/engine/api/v1.29/#operation/ImageCreate */
 	imageCreate( ImageCreateRequest )( ImageCreateResponse )
 		throws NoRepository( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* get the history of the image https://docs.docker.com/engine/api/v1.29/#operation/ImageHistory */
+	/**! get the history of the image https://docs.docker.com/engine/api/v1.29/#operation/ImageHistory */
 	imageHistory( ImageHistoryRequest )( ImageHistoryResponse )
 		throws NoImage( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* Search images https://docs.docker.com/engine/api/v1.29/#operation/ImageSearch */
+	/**! Search images https://docs.docker.com/engine/api/v1.29/#operation/ImageSearch */
 	imageSearch( ImageSearchRequest )( ImageSearchResponse )
 		throws ServerError( StandardFaultType ),
 
-	/* Inspect a container https://docs.docker.com/engine/api/v1.29/#operation/ImageInspect*/
+	/**! Inspect a container https://docs.docker.com/engine/api/v1.29/#operation/ImageInspect*/
 	inspectContainer( InspectContainerRequest )( InspectContainerResponse )
 		throws ServerError( StandardFaultType ) NoSuchContainer( StandardFaultType ),
 
-	/* Inspect an image https://docs.docker.com/engine/api/v1.29/#operation/ImageInspect */
+	/**! Inspect an image https://docs.docker.com/engine/api/v1.29/#operation/ImageInspect */
 	inspectImage( InspectImageRequest )( InspectImageResponse )
 		throws ServerError( StandardFaultType ) NoSuchImage( StandardFaultType ),
 
-	/* inspect a network https://docs.docker.com/engine/api/v1.29/#operation/NetworkInspect */
+	/**! inspect a network https://docs.docker.com/engine/api/v1.29/#operation/NetworkInspect */
 	inspectNetwork( InspectNetworkRequest )( InspectNetworkResponse )
 		throws NoSuchNetwork( StandardFaultType ),
 
-	/* inspect a volume https://docs.docker.com/engine/api/v1.29/#operation/VolumeInspect */
+	/**! inspect a volume https://docs.docker.com/engine/api/v1.29/#operation/VolumeInspect */
 	inspectVolume( InspectVolumeRequest )( InspectVolumeResponse )
 		throws ServerError( StandardFaultType ) NoSuchVolume( StandardFaultType ),
 
-	/* Kill a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerKill */
+	/**! Kill a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerKill */
 	killContainer( KillContainerRequest )( KillContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* List processes inside a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerTop */
+	/**! List processes inside a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerTop */
 	listRunProcesses( ListRunProcessesRequest )( ListRunProcessesResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* Get container logs https://docs.docker.com/engine/api/v1.29/#operation/ContainerLogs */
+	/**! Get container logs https://docs.docker.com/engine/api/v1.29/#operation/ContainerLogs */
 	logs( LogsRequest )( LogsResponse ),
 
-	/* List netowrks https://docs.docker.com/engine/api/v1.29/#operation/NetworkList */
+	/**! List netowrks https://docs.docker.com/engine/api/v1.29/#operation/NetworkList */
 	networks( NetworksRequest )( NetworksResponse )
 		throws ServerError( StandardFaultType ),
 
-	/* Pause a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerPaused */
+	/**! Pause a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerPaused */
 	pauseContainer( PauseContainerRequest )( PauseContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* Remove a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerDelete */
+	/**! Remove a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerDelete */
 	removeContainer( RemoveContainerRequest )( RemoveContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ) BadParam( StandardFaultType ),
 
-	/* 	Remove an image https://docs.docker.com/engine/api/v1.29/#operation/ImageDelete */
+	/**! 	Remove an image https://docs.docker.com/engine/api/v1.29/#operation/ImageDelete */
 	removeImage( RemoveImageRequest )( RemoveImageResponse )
 		throws NoSuchImage( StandardFaultType ) ServerError( StandardFaultType ) Conflict( StandardFaultType ),
 
-	/* Remove a network https://docs.docker.com/engine/api/v1.29/#operation/NetworkDelete */
+	/**! Remove a network https://docs.docker.com/engine/api/v1.29/#operation/NetworkDelete */
 	removeNetwork( RemoveNetworkRequest )( RemoveNetworkResponse )
 		throws Conflict( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* Remove a volume https://docs.docker.com/engine/api/v1.29/#operation/VolumeDelete */
+	/**! Remove a volume https://docs.docker.com/engine/api/v1.29/#operation/VolumeDelete */
 	removeVolume( RemoveVolumeRequest )( RemoveVolumeResponse )
 		throws NoSuchVolume( StandardFaultType ) VolumeInUse( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* Rename a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerRename */
+	/**! Rename a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerRename */
 	renameContainer( RenameContainerRequest )( RenameContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ) ContainerInUse( StandardFaultType ),
 
-	/* Restart a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerRestart */
+	/**! Restart a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerRestart */
 	restartContainer( RestartContainerRequest )( RestartContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* Start a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerRestart*/
+	/**! Start a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerRestart*/
 	startContainer( StartContainerRequest )( StartContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ) AlreadyStarted( StandardFaultType ),
 
-	/* container stats based on resource usage https://docs.docker.com/engine/api/v1.29/#operation/ContainerStats */
+	/**! container stats based on resource usage https://docs.docker.com/engine/api/v1.29/#operation/ContainerStats */
 	statsContainer( StatsContainerRequest )( StatsContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* stop a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerStop */
+	/**! stop a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerStop */
 	stopContainer( StopContainerRequest )( StopContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ) AlreadyStopped( StandardFaultType ),
 
-	/* Unpause a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerUnpause */
+	/**! Unpause a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerUnpause */
 	unpauseContainer( UnpauseContainerRequest )( UnpauseContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType ),
 
-	/* List volumes https://docs.docker.com/engine/api/v1.29/#operation/VolumeList */
+	/**! List volumes https://docs.docker.com/engine/api/v1.29/#operation/VolumeList */
 	volumes( VolumesRequest )( VolumesResponse )
 		throws ServerError( StandardFaultType ),
 
-	/* Wait for a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerWait */
+	/**! Wait for a container https://docs.docker.com/engine/api/v1.29/#operation/ContainerWait */
 	waitContainer( WaitContainerRequest )( WaitContainerResponse )
 		throws NoSuchContainer( StandardFaultType ) ServerError( StandardFaultType )
 }

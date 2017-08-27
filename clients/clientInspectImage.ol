@@ -5,13 +5,13 @@ include "json_utils.iol"
 include "../InterfaceAPI.iol"
 
 outputPort DockerIn {
-	Location: "socket://localhost:8008"
+	Location: "socket://localhost:8009"
 	Protocol: sodep
 	Interfaces: InterfaceAPI
 }
 
 main {
-	rq.name = "imgjolie";
+	rq.name = "jolielang/testdeployer";
 	println@Console("***** INSPECT IMAGE "+ rq.name +" *****")();
 	inspectImage@DockerIn(rq)(response);
 	valueToPrettyString@StringUtils( response )( s );

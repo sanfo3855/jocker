@@ -5,13 +5,13 @@ include "json_utils.iol"
 include "../InterfaceAPI.iol"
 
 outputPort DockerIn {
-	Location: "socket://localhost:8008"
+	Location: "socket://localhost:8009"
 	Protocol: sodep
 	Interfaces: InterfaceAPI
 }
 
 main {
-	rq.id = "zen_euler";
+	rq.id = "jounit-1";
 	println@Console("***** KILL " +rq.id+ " CONTAINER *****")();
 	killContainer@DockerIn(rq)(response);
 	valueToPrettyString@StringUtils( response )( s );
